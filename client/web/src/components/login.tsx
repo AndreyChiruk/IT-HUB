@@ -20,6 +20,7 @@ function LoginPage() {
 
     const response = await login(data);
     if (response?.data.token) {
+      localStorage.setItem("access_token", response.data.token);
       navigate("/");
     } else {
       console.log("Error response");
