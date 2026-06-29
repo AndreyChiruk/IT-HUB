@@ -1,0 +1,35 @@
+.container-form {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(../static/authfon.jpg);
+}
+
+.box-form {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(211, 231, 254, 0.3);
+  border: 2px solid rgb(211, 231, 254);
+  border-radius: 6px;
+  padding: 30px;
+}
+.input-email_form,
+.input-name_form,
+.input-password_form,
+.input-submit_form {
+  border-radius: 8px;
+  margin-top: 10px;
+  padding: 10px;
+  min-width: 240px;
+}
+.input-email_form {
+  margin-top: 0px;
+}
+.input-name_form {
+}
+.input-password_form {
+}
+.input-submit_form {
+  cursor: pointer;
+}

@@ -1,0 +1,32 @@
+.container-profile {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(../static/profilefon.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.loading-header {
+  font-size: 36px;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.box-container {
+  display: flex;
+  flex-direction: column;
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 30px;
+}
+
+.box-container p {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+.profile-avatar {
+  margin: 0 auto;
+  max-width: 200px;
+  max-height: 200px;
+}

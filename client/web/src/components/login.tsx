@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { type LoginRequest, type LoginResponse } from "../api/types/auth.types";
+import { type LoginRequest } from "../api/types/auth.types";
 import login from "../api/auth/login";
 import { useNavigate } from "react-router-dom";
+import "../styles/auth.css";
 
 function LoginPage() {
   const navigate = useNavigate();
@@ -21,6 +22,7 @@ function LoginPage() {
     const response = await login(data);
     if (response?.data.token) {
       localStorage.setItem("access_token", response.data.token);
+      localStorage.setItem("user", JSON.stringify(response.data.user));
       navigate("/");
     } else {
       console.log("Error response");
@@ -29,9 +31,10 @@ function LoginPage() {
 
   return (
     <>
-      <div>
-        <form onSubmit={submitForm}>
+      <div className="container-form">
+        <form className="box-form" onSubmit={submitForm}>
           <input
+            className="input-email_form"
             name="email"
             type="email"
             value={email}
@@ -39,6 +42,7 @@ function LoginPage() {
             placeholder="Введите свое email:"
           />
           <input
+            className="input-name_form"
             name="name"
             type="text"
             value={name}
@@ -46,13 +50,14 @@ function LoginPage() {
             placeholder="Введите свое имя:"
           />
           <input
+            className="input-password_form"
             name="password"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Введите свой пароль:"
           />
-          <input type="submit" />
+          <input className="input-submit_form" type="submit" />
         </form>
       </div>
     </>
