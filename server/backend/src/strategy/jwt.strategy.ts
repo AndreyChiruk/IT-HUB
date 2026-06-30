@@ -11,7 +11,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
       secretOrKey: process.env.JWTSECRET || 'jwt',
     });
   }
-
+  //TODO: добавить sub если нужно
   validate(payload: { email: string; name: string }) {
     return {
       email: payload.email,

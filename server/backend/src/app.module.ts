@@ -4,9 +4,11 @@ import { AppService } from './app.service';
 import { LoginModule } from './login/login.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { SequelizeModule } from '@nestjs/sequelize';
+import { RegisterModule } from './register/register.module';
 @Module({
   imports: [
     LoginModule,
+    RegisterModule,
     ConfigModule.forRoot({ isGlobal: true, envFilePath: '.env' }),
     SequelizeModule.forRootAsync({
       imports: [ConfigModule],

@@ -4,6 +4,8 @@ import login from "../api/auth/login";
 import { useNavigate } from "react-router-dom";
 import "../styles/auth.css";
 
+//TODO: убрать ввод имени для логина
+
 function LoginPage() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -13,6 +15,7 @@ function LoginPage() {
   const submitForm = async (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Отправлен запрос");
+    //TODO: сделать валидацию email логин пароль Login
     if (email.length == 0 || name.length == 0 || password.length == 0) return;
 
     let data: LoginRequest = {
@@ -22,9 +25,9 @@ function LoginPage() {
     };
 
     const response = await login(data);
-    if (response?.data.token) {
-      localStorage.setItem("access_token", response.data.token);
-      localStorage.setItem("user", JSON.stringify(response.data.user));
+    if (response?.token) {
+      localStorage.setItem("access_token", response.token);
+      localStorage.setItem("user", JSON.stringify(response.user));
       navigate("/");
     } else {
       console.log("Error response");

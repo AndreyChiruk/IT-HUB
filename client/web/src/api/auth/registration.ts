@@ -4,8 +4,9 @@ import api from "../config";
 
 async function registration(data: RegisterRequest) {
   try {
-    const response = api.post<RegisterResponse>("/auth/registration", data);
-    return response;
+    const response = await api.post<RegisterResponse>("/register", data);
+    console.log(response.data);
+    return response.data;
   } catch (error) {
     console.error("Auth registration error", error);
   }

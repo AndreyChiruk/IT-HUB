@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import login from "../api/auth/login";
 import { useNavigate } from "react-router-dom";
 import "../styles/auth.css";
 import type { RegisterRequest } from "../api/types/register.types";
+import registration from "../api/auth/registration";
 
 function RegistrationPage() {
   const navigate = useNavigate();
@@ -13,6 +13,7 @@ function RegistrationPage() {
 
   const submitForm = async (e: React.FormEvent) => {
     e.preventDefault();
+    //TODO: сделать валидацию email логин пароль Registration
     if (
       email.length == 0 ||
       name.length == 0 ||
@@ -27,15 +28,14 @@ function RegistrationPage() {
       password: password,
     };
 
-    // const response = await login(data);
-    // if (response?.data.token) {
-    //   localStorage.setItem("access_token", response.data.token);
-    //   localStorage.setItem("user", JSON.stringify(response.data.user));
-    //   navigate("/");
-    // } else {
-    //   console.log("Error response");
-    // }
-    navigate("/login");
+    const response = await registration(data);
+    if (response?.token) {
+      localStorage.setItem("access_token", response.token);
+      localStorage.setItem("user", JSON.stringify(response.user));
+      navigate("/");
+    } else {
+      console.log("Error response");
+    }
   };
   return (
     <div className="container-form">

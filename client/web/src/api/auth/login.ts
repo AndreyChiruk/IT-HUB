@@ -4,8 +4,8 @@ import api from "../config";
 
 async function login(data: LoginRequest) {
   try {
-    const response = api.post<LoginResponse>("/auth/login", data);
-    return response;
+    const response = await api.post<LoginResponse>("/auth/login", data);
+    return response.data;
   } catch (error) {
     console.error("Auth login error", error);
   }
