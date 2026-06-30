@@ -1,7 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logotip from "../static/logo.png";
 import "../styles/header.css";
 function Header() {
+  const navigate = useNavigate();
+  const deleteLocalStorage = () => {
+    localStorage.removeItem("access_token");
+    localStorage.removeItem("user");
+    navigate("/login");
+  };
   return (
     <header>
       <div className="box-logo">
@@ -10,13 +16,19 @@ function Header() {
       <div className="box-navigation">
         <ul className="list">
           <li>
-            <Link to="/">Главная</Link>
+            <Link to="/" className="list-elem">
+              Главная
+            </Link>
           </li>
           <li>
-            <Link to="/profile">Профиль</Link>
+            <Link to="/profile" className="list-elem">
+              Профиль
+            </Link>
           </li>
           <li>
-            <Link to="/exit">Выйти</Link>
+            <button onClick={deleteLocalStorage} className="list-elem">
+              Выйти
+            </button>
           </li>
         </ul>
       </div>

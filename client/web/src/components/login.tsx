@@ -13,6 +13,8 @@ function LoginPage() {
   const submitForm = async (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Отправлен запрос");
+    if (email.length == 0 || name.length == 0 || password.length == 0) return;
+
     let data: LoginRequest = {
       email: email,
       name: name,
@@ -57,7 +59,13 @@ function LoginPage() {
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Введите свой пароль:"
           />
-          <input className="input-submit_form" type="submit" />
+          <input className="input-submit_form" type="submit" value="Войти" />
+          <button
+            className="input-submit_form"
+            onClick={() => navigate("/register")}
+          >
+            Зарегистрироваться
+          </button>
         </form>
       </div>
     </>
