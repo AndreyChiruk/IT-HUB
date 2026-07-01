@@ -21,6 +21,11 @@ function Header() {
             </Link>
           </li>
           <li>
+            <Link to="/events" className="list-elem">
+              Ивенты
+            </Link>
+          </li>
+          <li>
             <Link to="/profile" className="list-elem">
               Профиль
             </Link>

@@ -5,6 +5,7 @@ import ProtectedRoute from "./components/protected.route";
 import ProfilePage from "./components/profile";
 import HomePage from "./components/home";
 import RegistrationPage from "./components/registration";
+import EventsPage from "./components/events";
 function App() {
   return (
     <BrowserRouter>
@@ -23,7 +24,7 @@ function App() {
           path="/events"
           element={
             <ProtectedRoute>
-              <></>
+              <EventsPage />
             </ProtectedRoute>
           }
         />

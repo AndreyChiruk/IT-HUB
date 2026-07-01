@@ -5,11 +5,14 @@ import { LoginModule } from './login/login.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { RegisterModule } from './register/register.module';
+import { MongooseModule } from '@nestjs/mongoose';
 @Module({
   imports: [
     LoginModule,
     RegisterModule,
     ConfigModule.forRoot({ isGlobal: true, envFilePath: '.env' }),
+    //TODO:сделать по нормальному импорт модуля через async
+    MongooseModule.forRoot('mongodb://localhost:27017/ITHUB'),
     SequelizeModule.forRootAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
