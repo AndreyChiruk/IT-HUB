@@ -3,24 +3,20 @@ import { type LoginRequest } from "../api/types/auth.types";
 import login from "../api/auth/login";
 import { useNavigate } from "react-router-dom";
 import "../styles/auth.css";
-
-//TODO: убрать ввод имени для логина
+import Validator from "../utils/validator";
 
 function LoginPage() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
 
   const submitForm = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Отправлен запрос");
-    //TODO: сделать валидацию email логин пароль Login
-    if (email.length == 0 || name.length == 0 || password.length == 0) return;
+
+    if (!Validator.userValidateLogin(email, password)) return;
 
     let data: LoginRequest = {
       email: email,
-      name: name,
       password: password,
     };
 
@@ -45,14 +41,6 @@ function LoginPage() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Введите свое email:"
-          />
-          <input
-            className="input-name_form"
-            name="name"
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder="Введите свое имя:"
           />
           <input
             className="input-password_form"

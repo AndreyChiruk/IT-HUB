@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "../styles/auth.css";
 import type { RegisterRequest } from "../api/types/register.types";
 import registration from "../api/auth/registration";
+import Validator from "../utils/validator";
 
 function RegistrationPage() {
   const navigate = useNavigate();
@@ -13,14 +14,9 @@ function RegistrationPage() {
 
   const submitForm = async (e: React.FormEvent) => {
     e.preventDefault();
-    //TODO: сделать валидацию email логин пароль Registration
-    if (
-      email.length == 0 ||
-      name.length == 0 ||
-      password.length == 0 ||
-      password != second_password
-    )
-      return;
+
+    if (!Validator.userValidate(name, email, password)) return;
+    if (password != second_password) return;
 
     let data: RegisterRequest = {
       email: email,

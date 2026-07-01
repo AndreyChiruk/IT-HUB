@@ -1,11 +1,15 @@
 import Header from "./header";
-
+import "../styles/welcome.css";
 function HomePage() {
   return (
-    <div>
+    <div className="container">
       <Header />
-      <div>
-        <h1>Welcome page !!!</h1>
+      <div className="content-block">
+        <h1 className="content-title">WELCOME PAGE</h1>
+        <p className="content-text">
+          Создавайте и посещайте митапы, конференции и воркшопы. IT-HUB — это
+          место, где рождаются идеи и находятся таланты для ваших проектов.
+        </p>
       </div>
     </div>
   );

@@ -4,6 +4,8 @@
   justify-content: center;
   align-items: center;
   background-image: url(../static/authfon.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .box-form {
